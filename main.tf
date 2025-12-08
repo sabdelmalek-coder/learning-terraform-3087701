@@ -40,8 +40,8 @@ module "autoscaling" {
   max_size = 2
 
   vpc_zone_identifier = module.blog_vpc.public_subnets
-  target_group_arns = module.blog_alb.target_group_arns
-  security_groups = [module.blog_sg.security_group_id]
+  target_group_arns   = module.blog_alb.target_group_arns
+  security_groups     = [module.blog_sg.security_group_id]
   
   image_id               = data.aws_ami.app_ami.id
   instance_type          = var.instance_type
@@ -63,8 +63,7 @@ module "blog_alb" {
       name_prefix        = "blog-"
       backend_protocol   = "HTTP"
       backend_port       = 80
-      target_type      = "instance"
-      
+      target_type      = "instance"  
     }
   ]
 
